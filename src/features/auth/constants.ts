@@ -1,0 +1,1 @@
+export const AUTH_SESSION_DURATION = 24 * 60 * 60 * 1000

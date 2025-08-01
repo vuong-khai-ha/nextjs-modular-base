@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "root": {
+      "title": "Next.js Modular Base",
+      "description": "A modular, fullstack Next.js base powered by Bun, Tailwind CSS, and Drizzle ORM. Designed for performance, clean architecture, and scalability.",
+      "keywords": "nextjs, bun, typescript, tailwindcss, drizzle, modular, boilerplate, fullstack",
+      "author": "Vuong Khai Ha"
+    }
+  },
+  "notifications": {
+    "common": {
+      "requested_success": "Request completed successfully",
+      "unknown_error": "An unknown error occurred"
+    },
+    "server_error": {
+      "no_jwt_secret": "Server error: JWT secret is not set"
+    },
+    "auth": {
+      "login_success": "Login successful",
+      "logging_in": "Logging in...",
+      "logging_out": "Logging out...",
+      "logout_success": "Logout successful",
+
+      "login_failed": "Login failed",
+      "logout_failed": "Logout failed",
+      "can_not_create_session": "Login failed, can not create session",
+      "invalid_token": "Invalid token",
+      "user_not_found": "User not found",
+      "wrong_email_or_invalid_password": "Wrong email or invalid password",
+      "user_inactive": "User is inactive"
+    }
+  },
+  "pages": {
+    "root": {
+      "slogan_first": "Sharing the finest architecture I know",
+      "slogan_second": "for you to go further, faster.",
+      "go_to_login_page": "Go to login page"
+    }
+  },
+  "components": {
+    "forms": {
+      "login": {
+        "lbl_email": "Email address",
+        "lbl_password": "Password",
+        "btn_sign_in": "Sign in",
+        "validation": {
+          "email_required": "Email is required",
+          "email_invalid": "Email is invalid",
+          "password_required": "Password is required"
+        }
+      }
+    }
+  }
+}

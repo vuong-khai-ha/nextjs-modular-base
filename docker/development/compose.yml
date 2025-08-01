@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  nextjs-modular-base-dev:
+    image: nextjs-modular-base-dev
+    container_name: nextjs-modular-base-dev
+    env_file: .env
+    build:
+      context: ../../
+      dockerfile: ./docker/development/Dockerfile
+      args:
+        - NODE_ENV=development
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ../../:/app:cached
+      - /app/node_modules
+    tty: true
+    stdin_open: true
+    command: bun x next dev
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 30m
+        max-file: 3
+
+  nextjs-modular-base-dev-cron:
+    image: nextjs-modular-base-dev-cron
+    container_name: nextjs-modular-base-dev-cron
+    env_file: .env
+    build:
+      context: ../../
+      dockerfile: ./docker/development/Dockerfile.cron
+    depends_on:
+      - nextjs-modular-base-dev
+    volumes:
+      - ../../:/app:cached
+      - /app/node_modules
+    tty: true
+    stdin_open: true
+    command: bun run src/cronjobs/index.ts
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 30m
+        max-file: 3
