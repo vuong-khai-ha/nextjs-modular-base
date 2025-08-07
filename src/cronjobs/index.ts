@@ -1,2 +1,3 @@
 export * from './sessions'
-await new Promise(() => {})
+
+setInterval(() => {}, 1 << 30)
