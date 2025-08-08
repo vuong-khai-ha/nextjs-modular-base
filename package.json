@@ -1,6 +1,8 @@
 {
   "name": "nextjs-modular-base",
   "version": "0.1.0",
+  "author": "Vuong Khai Ha",
+  "description": "A modular, fullstack Next.js base powered by Bun, Tailwind CSS, and Drizzle ORM. Designed for performance, clean architecture, and scalability.",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
