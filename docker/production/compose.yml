@@ -13,7 +13,7 @@ services:
       - "${PORT}:${PORT}"
     tty: true
     stdin_open: true
-    command: bun x next start
+    command: bun --bun next start
     restart: always
     logging:
       driver: json-file
@@ -33,7 +33,7 @@ services:
     tty: true
     stdin_open: true
     restart: always
-    command: bun run src/cronjobs/index.ts
+    command: bun --bun src/cronjobs/index.ts
     logging:
       driver: json-file
       options:

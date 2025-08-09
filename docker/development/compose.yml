@@ -16,7 +16,7 @@ services:
       - /app/node_modules
     tty: true
     stdin_open: true
-    command: bun x next dev
+    command: bun --bun next dev --turbopack
     restart: unless-stopped
     logging:
       driver: json-file
@@ -38,7 +38,7 @@ services:
       - /app/node_modules
     tty: true
     stdin_open: true
-    command: bun run src/cronjobs/index.ts
+    command: bun --bun src/cronjobs/index.ts
     restart: unless-stopped
     logging:
       driver: json-file
