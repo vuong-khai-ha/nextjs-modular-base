@@ -36,9 +36,12 @@ const isMatchedUserAgent = (
   )
 }
 
-const respondUnauthorized = (request: NextRequest) => {
-  if (!isApiRoute(request.nextUrl.pathname))
-    return NextResponse.redirect(new URL(LOGIN_PATH, request.url))
+const respondUnauthorized = (request: NextRequest, forceDeleteToken: boolean = false) => {
+  if (!isApiRoute(request.nextUrl.pathname)) {
+    const res = NextResponse.redirect(new URL(LOGIN_PATH, request.url))
+    if (forceDeleteToken) res.cookies.delete(AUTH_COOKIES_NAME)
+    return res
+  }
   return NextResponse.json({}, { status: 401, statusText: 'Unauthorized' })
 }
 
@@ -51,12 +54,12 @@ export default async function middleware(request: NextRequest) {
   if (!token) return respondUnauthorized(request)
 
   const decodedToken = await jwt.verify(token)
-  if (!decodedToken) return respondUnauthorized(request)
+  if (!decodedToken) return respondUnauthorized(request, true)
 
   const tokenAgent = decodedToken.userAgent as IClientAgent
   const currentAgent = getBrowserInfo(request.headers.get('user-agent') || '')
   if (!isMatchedUserAgent(currentAgent, tokenAgent))
-    return respondUnauthorized(request)
+    return respondUnauthorized(request, true)
 
   return NextResponse.next()
 }
