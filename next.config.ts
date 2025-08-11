@@ -3,8 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  turbopack: {
-  },
+  turbopack: {},
   eslint: {
     ignoreDuringBuilds: true,
   },

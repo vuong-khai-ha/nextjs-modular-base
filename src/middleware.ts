@@ -36,7 +36,10 @@ const isMatchedUserAgent = (
   )
 }
 
-const respondUnauthorized = (request: NextRequest, forceDeleteToken: boolean = false) => {
+const respondUnauthorized = (
+  request: NextRequest,
+  forceDeleteToken: boolean = false,
+) => {
   if (!isApiRoute(request.nextUrl.pathname)) {
     const res = NextResponse.redirect(new URL(LOGIN_PATH, request.url))
     if (forceDeleteToken) res.cookies.delete(AUTH_COOKIES_NAME)
